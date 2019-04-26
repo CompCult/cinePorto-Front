@@ -1,0 +1,127 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #missionAnswerForm ="ngForm" >
+
+    <h4>Dados da resposta</h4>
+
+    <div class="form-group" >
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="missionAnswer._id" class="form-control" type="number" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+
+    <div class="form-group" >
+      <label for="_user">Id Usuário</label>
+      <input id="_user" [(ngModel)]="missionAnswer._user.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
+    </div>
+
+
+    <div class="form-group" >
+      <label for="_quiz">Id Missão</label>
+      <input id="_quiz" [(ngModel)]="missionAnswer._mission.name" class="form-control" type="text" name="mission_name"  disabled  #name="ngModel">
+    </div>
+
+    <div class="form-group" >
+      <label for="_group">Id Grupo</label>
+      <input id="_group" [(ngModel)]="missionAnswer._group" class="form-control" type="number" name="_group"  disabled  #_group="ngModel">
+    </div>
+
+    <hr>
+
+    <div class="form-group">
+      <label for="dataAniversario">Data da Resposta</label>
+      <input bsDatepicker id="created_at"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="missionAnswer.created_at"
+      value="{{missionAnswer.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
+    </div>
+    <hr>
+
+    <button *ngIf="missionAnswer.image" type="button" class="btn btn-secondary" (click)= seeImage()>Ver Imagem</button>
+
+    <br>
+    <br>
+    <div class=""  *ngIf="image">
+      <img src="{{missionAnswer.image}}" alt="" height="600" width="430">
+    </div>
+
+    <hr>
+
+    <button *ngIf="missionAnswer.text_msg" type="button" class="btn btn-secondary" (click)= seeText()>Ver texto</button>
+    <br><br>
+    <div class=""  *ngIf="text">
+      <h5>{{missionAnswer.text_msg}}</h5>
+    </div>
+
+    <hr>
+    <button *ngIf="missionAnswer.video" type="button" class="btn btn-secondary" (click)= seeVideo()>Ver video</button>
+    <br><br>
+    <div class=""  *ngIf="video">
+      <video width="450" height="360" controls>
+        <source src="{{missionAnswer.video}}" type="video/mp4">
+        </video>
+      </div>
+
+
+      <hr>
+
+
+
+      <button *ngIf="missionAnswer.audio" type="button" class="btn btn-secondary" (click)= seeAudio()>Ver audio</button>
+      <br><br>
+      <audio controls *ngIf="audio">
+        <source src="{{missionAnswer.audio}}" type="audio/wav">
+          <source src="horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+
+
+
+
+          <hr>
+          <div *ngIf="missionAnswer.location_lat" >
+
+
+            <button type="button"(click)="openModal(template)">
+              <img [src]="'../assets/img/pin_red_map.png'" width="43" height="43">
+            </button>
+            <ng-template #template >
+              <div class="modal-content">
+                <div class="modal-body">
+                  <agm-map class="modal-map" [latitude]="toNumber(missionAnswer.location_lat)" [longitude]="toNumber(missionAnswer.location_lng)" [zoom]="15" >
+                    <agm-marker [latitude]="toNumber(missionAnswer.location_lat)"
+                    [longitude]="toNumber(missionAnswer.location_lng)"
+                    [iconUrl]="'../assets/img/pin_red_map.png'">
+                  </agm-marker>
+                </agm-map>
+              </div>
+            </div>
+          </ng-template>
+
+        </div>
+        <hr>
+
+        <div class="form-group" >
+          <label for="status">Status</label>
+          <input id="status" [(ngModel)]="missionAnswer.status" class="form-control" type="text" name="status"  disabled  #status="ngModel">
+        </div>
+
+
+
+
+
+
+        <div class="modal-footer">
+          <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= accept(missionAnswer)>Válido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-secondary"  (click)= pedant(missionAnswer)>Pendente</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-warning"  (click)= reject(missionAnswer)>Inválido</button>
+          <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(missionAnswer)>Deletar</button>
+          <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+        </div>
+      </form>

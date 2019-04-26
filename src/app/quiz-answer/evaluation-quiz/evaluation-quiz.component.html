@@ -1,0 +1,95 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">Resposta Quizzes</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #quizAnswerForm ="ngForm" >
+
+    <h4>Dados da resposta</h4>
+
+    <div class="form-group" >
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="quizAnswer._id" class="form-control" type="number" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+
+    <!-- <div class="form-group" >
+      <label for="_user">Id Usuario</label>
+      <input id="_user" [(ngModel)]="quizAnswer._user.name" class="form-control" type="text" name="name"  disabled  #name="ngModel">
+    </div> -->
+
+
+    <div class="form-group" >
+      <label for="_quiz">Id Quiz</label>
+      <input id="_quiz" [(ngModel)]="quizAnswer._quiz.title" class="form-control" type="text" name="title"  disabled  #title="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="dataAniversario">Data da Resposta</label>
+      <input bsDatepicker id="created_at" disabled class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="quizAnswer.created_at"
+      value="{{quizAnswer.created_at | date:'dd/MM/yyyy'}}" name="created_at">
+    </div>
+
+
+    <div class="form-group">
+      <label>Resposta</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="a"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternativa A
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="b"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternativa B
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="c"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternativa C
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="d"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternativa D
+        </label>
+
+        <label class="radio-inline">
+          <input type="radio" name="answer" value="e"
+          [(ngModel)]="quizAnswer.answer"  #answer="ngModel">
+          Alternativa E
+        </label>
+
+
+
+      </div>
+
+    </div>
+
+
+
+    <div class="form-group" >
+      <label for="status">Status</label>
+      <input id="status" [(ngModel)]="approvedd" class="form-control" type="text" name="approvedd"  disabled  #approved="ngModel">
+    </div>
+
+
+
+
+<div class="modal-footer">
+  <button *ngIf="showOptions2()" type="button" class="btn btn-info"  (click)= accept(quizAnswer)>Válido</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-secondary"  (click)= pedant(quizAnswer)>Pendente</button>
+  <button *ngIf="showOptions2()" type="button" class="btn btn-warning"  (click)= reject(quizAnswer)>Inválido</button>
+  <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(quizAnswer)>Deletar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>

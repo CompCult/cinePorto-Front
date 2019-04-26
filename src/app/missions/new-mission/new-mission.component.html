@@ -1,0 +1,237 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #missionForm ="ngForm" (ngSubmit)="create(missionForm)">
+
+    <h4>Dados Missão</h4>
+
+    <hr>
+
+
+  <div class="form-group" required>
+    <label for="dataAniversario">Data de Início</label>
+    <input bsDatepicker id="start_time"  class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.start_time"
+    value="{{mission.start_time | date:'dd/MM/yyyy'}}" name="start_time">
+  </div>
+
+  <div class="form-group" required>
+    <label for="dataAniversario">Data de Fim</label>
+    <input bsDatepicker id="end_time"  class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.end_time"
+    value="{{mission.end_time | date:'dd/MM/yyyy'}}" name="end_time">
+  </div>
+
+
+  <div class="form-group" *ngIf="modify">
+    <label for="dataAniversario">Criado em:</label>
+    <input bsDatepicker id="created_at" disabled class="form-control" type="text"
+    [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="mission.created_at"
+    value="{{mission.created_at | date:'dd/MM/yyyy'}}" name="created_at" disabled>
+  </div>
+
+<hr>
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="mission._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input id="name" [(ngModel)]="mission.name" class="form-control" type="text" name="name"  #name="ngModel" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <!-- <input id="description" [(ngModel)]="mission.description" class="form-control" type="text" name="description"  #description="ngModel" required> -->
+      <textarea id="description" [(ngModel)]="mission.description" class="form-control" type="text" name="description" style="height: 200px"  #description="ngModel" required ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="end_message">Mensagem final</label>
+      <input id="end_message" [(ngModel)]="mission.end_message" class="form-control" type="text" name="end_message"  #end_message="ngModel" required>
+    </div>
+
+    <div class="form-group">
+      <label for="points">Pontos</label>
+      <input id="points" [(ngModel)]="mission.points" class="form-control" type="number" name="points"  #points="ngModel" required>
+    </div>
+
+
+    <div class="form-group" *ngIf="modify">
+      <label for="secret_code">Código Secreto</label>
+      <input id="secret_code" [(ngModel)]="mission.secret_code" class="form-control" type="text" name="secret_code" disabled  #secret_code="ngModel" required>
+    </div>
+
+
+    <div class="form-group">
+      <label>Visibilidade</label>
+      <div class="form-control"required>
+        <label class="radio-inline">
+          <input type="radio" name="isPublic" value="true"
+          [(ngModel)]="isPublic">
+          Público
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="isPublic" value="false"
+          [(ngModel)]="isPublic"  >
+          Privado
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group" required>
+      <label>Grupo</label>
+      <div class="form-control" required>
+        <label class="radio-inline">
+          <input type="radio" name="isGrupal" value="true"
+          [(ngModel)]="isGrupal"  >
+          Resposta em grupo
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="isGrupal" value="false"
+          [(ngModel)]="isGrupal"  >
+          Resposta Individual
+        </label>
+      </div>
+    </div>
+
+
+    <div class="form-group" required>
+      <label>Único envio</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="single" value="true"
+          [(ngModel)]="single" >
+          Uma única resposta pode ser enviada
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="single" value="false"
+          [(ngModel)]="single" >
+          Várias respostas podem ser enviadas
+        </label>
+      </div>
+    </div>
+
+
+    <hr>
+
+    <h4 >Tipos de envio</h4>
+
+    <div class="form-group" required>
+      <label>Imagem</label >
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="image" value="true"
+          [(ngModel)]="image"  >
+          Sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="image" value="false"
+          [(ngModel)]="image"  >
+          Não
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group" required>
+      <label>Vídeo</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="video" value="true"
+          [(ngModel)]="video" >
+          Sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="has_video" value="false"
+          [(ngModel)]="video" >
+          Não
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group" required>
+      <label>Texto</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="text" value="true"
+          [(ngModel)]="text"  >
+          Sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="text" value="false"
+          [(ngModel)]="text"  >
+          Não
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group" required>
+      <label>Áudio</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="audio" value="true"
+          [(ngModel)]="audio"  >
+          Sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="audio" value="false"
+          [(ngModel)]="audio" >
+          Não
+        </label>
+
+      </div>
+    </div>
+
+    <div class="form-group" required>
+      <label>Geolocalização</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="geolocation" value="true"
+          [(ngModel)]="geolocation"  >
+          Sim
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="geolocation" value="false"
+          [(ngModel)]="geolocation" >
+          Não
+        </label>
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-success" *ngIf="!modify">Criar</button>
+    <button *ngIf="showOptions()" type="button" class="btn btn-danger"  (click)= delete(mission)>Deletar</button>
+    <button *ngIf="showOptions()" type="button" class="btn btn-info"  (click)= modifymission(mission)>Modificar</button>
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+  </div>
+</form>

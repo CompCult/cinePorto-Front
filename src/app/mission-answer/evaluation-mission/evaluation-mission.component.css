@@ -1,0 +1,9 @@
+.inline{
+  display: inline-block;
+}
+
+
+.modal-map {
+  height: 300px;
+  width: 100%;
+}

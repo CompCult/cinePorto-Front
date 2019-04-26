@@ -1,0 +1,69 @@
+<div class="top-space" >
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Lista de Usuários</span>
+
+
+    <form  #searchForm ="ngForm" (ngSubmit)="search(searchForm)" class="form-inline navbar-right">
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle"
+        aria-controls="dropdown-basic">
+        {{pesquisaButton}} <span class="caret"></span>
+      </button>
+      <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+      role="menu" aria-labelledby="button-basic">
+      <li ><a class="dropdown-item" (click)="change('name')" >Nome</a></li>
+      <li ><a class="dropdown-item" (click)="change('email')">Email</a></li>
+      <li ><a class="dropdown-item" (click)="change('id')">ID</a></li>
+    </ul>
+  </div>
+  <input class="form-control mr-sm-2" type="text" placeholder="Procurar" aria-label="Search" [(ngModel)]="searcher.elementoPesquisa" name ="elementoPesquisa" #elementoPesquisa="ngModel">
+  <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+</form>
+</nav>
+
+</div>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-danger" type="button">Nome:</button>
+        </div>
+        <input (keyup)='updateFilterName($event)' type="text" class="form-control" placeholder="Qual o nome que deseja pesquisar?" aria-label="">
+      </div>
+    </div>
+    <div class="col-sm">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <button class="btn btn-outline-danger" type="button">Email:</button>
+        </div>
+        <input (keyup)='updateFilterEmail($event)' type="text" class="form-control" placeholder="Qual o email que deseja pesquisar?" aria-label="" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+</div>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>NOME</th>
+    <th>EMAIL</th>
+    <th>OPÇÕES</th>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{user._id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td>
+      <button class="btn btn-outline-danger my-2 my-sm-0" (click)="option(user)">Opções</button>
+    </td>
+  </tr>
+</table>
+
+<div class="fixed-action-btn" >
+  <button class="btn btn-danger" (click)="create()" ><span> Criar Usuário</span></button>
+</div>

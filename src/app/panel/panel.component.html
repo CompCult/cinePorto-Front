@@ -1,0 +1,79 @@
+<nav class="navbar my-nav navbar-expand-lg navbar-dark">
+
+  <a class="navbar-brand" routerLinkActive="active" routerLink="">CineAtos</a>
+
+
+
+  <div class="navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="users">Usuários<span class="sr-only">(current)</span></a>
+      </li>
+
+
+
+
+
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
+          Quiz
+        </a>
+
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+          <button class="dropdown-item" routerLink="quiz">Quiz</button>
+          <hr>
+          <button class="dropdown-item" routerLink="quizAnswer">Respostas Quizzes</button>
+        </div>
+
+      </li>
+
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic5" routerLinkActive="active"  ngbDropdownToggle >
+          Missões
+        </a>
+
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic5">
+          <button class="dropdown-item" routerLink="missson">Missões</button>
+          <hr>
+          <button class="dropdown-item" routerLink="missionAnswer">Respostas Missões</button>
+        </div>
+
+      </li>
+
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
+          Agenda
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+          <button class="dropdown-item" routerLink="appointment">Eventos</button>
+          <hr>
+          <button class="dropdown-item" routerLink="Appointmentrequest">Pedidos Eventos</button>
+        </div>
+      </li>
+
+
+    </ul>
+
+    <ul class="navbar-nav navbar-right">
+      <div class="navbar-right nav-item">
+        <a class="nav-link" routerLink="login" (click) = "logout()" >{{loginMensage}}</a>
+      </div>
+    </ul>
+  </div>
+</nav>
+
+<section>
+  <div class="container">
+
+    <router-outlet></router-outlet>
+
+  </div>
+
+</section>
+
+
+<footer >
+  <span style="color: white">@Comcult - inovar aplication - 2018</span>
+</footer>

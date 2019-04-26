@@ -1,0 +1,54 @@
+<div class="top-space" >
+
+  <nav class="navbar navbar-dark my-nav ">
+    <span class="navbar-brand">Lista de Solicitações de Eventos</span>
+
+
+    <form class="form-inline navbar-right">
+      <input class="form-control mr-sm-2" type="search" placeholder="Procurar" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Procurar</button>
+    </form>
+  </nav>
+
+</div>
+
+<br>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Solicitante</th>
+    <th>Evento</th>
+    <th>Solicitação</th>
+    <th>Modificação</th>
+    <th>Status</th>
+    <th>Ações</th>
+
+  </tr>
+  <tr *ngFor="let appointment of appointmentsRequest">
+    <td>{{appointment._id}}</td>
+    <td>{{appointment._user.name}}</td>
+    <td>{{appointment._appointment.name}}</td>
+    <td>{{appointment.created_at | date:'dd/MM/yyyy'}}</td>
+    <td>{{appointment.updated_at | date:'dd/MM/yyyy'}}</td>
+    <td>{{appointment.status}}</td>
+    <td>
+      <button type="button" class="btn btn-outline-danger my-2 my-sm-0" (click)="openModal(template)">Mensagem e Opções</button>
+      <ng-template #template>
+        <div class="modal-header">
+          <h4 class="modal-title pull-left">Menssagem</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{appointment.message}}</p>
+        </div>
+        <div class="modal-footer">
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-danger" (click)= reject(appointment)>Negar</button>
+          <button *ngIf="showOptions(appointment)" type="button" class="btn btn-success" (click)= approve(appointment)>Aprovar</button>
+        </div>
+      </ng-template>
+    </td>
+  </tr>
+</table>

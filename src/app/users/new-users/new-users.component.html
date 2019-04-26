@@ -1,0 +1,173 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #userForm ="ngForm" (ngSubmit)="create(userForm)">
+
+    <h4>Dados Pessoais</h4>
+
+    <div class="form-group">
+      <label for="id">Imagem</label>
+      <br>
+      <img [src]="getImageUser()" alt="" height="200" width="200">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="id">Id</label>
+      <input id="id" [(ngModel)]="user._id" class="form-control" type="text" name="_id"  disabled  #_id="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="nome">Nome completo</label>
+      <input id="nome" [(ngModel)]="user.name" class="form-control" type="text" name="name"  #name="ngModel" >
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email" [(ngModel)]="user.email" class="form-control" type="email" name="email"  #email="ngModel">
+    </div>
+
+    <div  class="form-group">
+      <label (click)="setPasswordModify()" for="senha">Senha
+         <img src="../../assets/img/unlock_24.png"/>
+      </label>
+      <input *ngIf="modifyPassword" id="senha" [(ngModel)]="password" class="form-control" type="password" name="password">
+    </div>
+
+    <!-- type-->
+    <div class="form-group" *ngIf="modify">
+      <label for="type">Tipo</label>
+      <select id="type" [(ngModel)]="user.type" class="form-control" name="type" (click)= checkType() #type="ngModel">
+        <option value="professor">Professor</option>
+        <option value="estudante" >Estudante</option>
+        <option value="gestor" >Gestor</option>
+        <option value="Usuário comum" >Usuário comum</option>
+
+      </select>
+    </div>
+
+    <!-- institution-->
+    <div class="form-group" *ngIf="checking" >
+      <label for="type">Instituição</label>
+      <input id="institution" [(ngModel)]="user.institution" class="form-control" type="text" name="institution"  #institution="ngModel">
+    </div>
+
+    <!--request_limit -->
+    <div class="form-group" *ngIf="modify">
+      <label for="type">Limite de Requisição</label>
+      <input id="request_limit" [(ngModel)]="user.request_limit" class="form-control" type="text" name="request_limit"  #request_limit="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="telefone">Telefone</label>
+      <input id="telefone" [(ngModel)]="user.phone" class="form-control" type="text" name="phone"  #phone="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="dataAniversario">Data de Aniversário</label>
+      <input bsDatepicker id="dataAniversario"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="user.birth"
+      value="{{user.birth | date:'dd/MM/yyyy'}}" name="birth">
+    </div>
+
+    <div class="form-group"*ngIf="modify">
+      <label>Genero</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" name="sex" value="Masculino"
+          [(ngModel)]="user.sex"  #sex="ngModel">
+          Masculino
+        </label>
+
+        <label class="inline">
+          <input type="radio" name="sex" value="Feminino"
+          [(ngModel)]="user.sex"  #sex="ngModel">
+          Feminino
+        </label>
+
+      </div>
+
+    </div>
+
+    <hr *ngIf="modify">
+
+    <h4 *ngIf="modify">Endereço</h4>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="rua">Rua</label>
+      <input id="rua" [(ngModel)]="user.street" class="form-control" type="text" name="street"  #street="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="numero">Número</label>
+      <input id="numero" [(ngModel)]="user.number" class="form-control" type="text" name="number"  #number="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="bairro">Bairro</label>
+      <input id="bairro" [(ngModel)]="user.neighborhood" class="form-control" type="text" name="neighborhood"  #neighborhood="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify">
+      <label for="complemento">Complemento</label>
+      <input id="complemento" [(ngModel)]="user.complement" class="form-control" type="text" name="complement"  #complement="ngModel">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify">
+      <label for="cep">Cep</label>
+      <input id="cep" [(ngModel)]="user.zipcode" class="form-control" type="text" name="zipcode"  #zipcode="ngModel">
+    </div>
+
+
+    <div class="form-group" *ngIf="modify" >
+      <label for="cidade">Cidade</label>
+      <input id="cidade" [(ngModel)]="user.city" class="form-control" type="text" name="city"  #city="ngModel">
+    </div>
+
+    <div class="form-group" *ngIf="modify" >
+      <label for="estado">Estado</label>
+      <select id="estado" [(ngModel)]="user.state" class="form-control" name="state"  #state="ngModel">
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AP">AP</option>
+        <option value="AM">AM</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MT">MT</option>
+        <option value="MS">MS</option>
+        <option value="MG">MG</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PR">PR</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RS">RS</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="SC">SC</option>
+        <option value="SP">SP</option>
+        <option value="SE">SE</option>
+        <option value="TO">TO</option>
+      </select>
+    </div>
+
+
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" *ngIf="!modify">Confirmar</button>
+  <button type="button" class="btn btn-info" *ngIf="modify" (click)= modifyUserUsuario(user)>Salvar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>

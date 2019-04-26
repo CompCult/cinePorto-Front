@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title pull-left">{{title}}</h4>
+  <button type="button" class="close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+
+  <form #appointmentForm ="ngForm" (ngSubmit)="create(appointmentForm)">
+
+    <h4>Dados do Evento</h4>
+
+    <div class="form-group">
+      <label for="name">Nome</label>
+      <input id="name" [(ngModel)]="appointment.name" class="form-control" type="text" name="name"  #name="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="start_date">Dia do início</label>
+      <input bsDatepicker id="start_date"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.start_date"
+      value="{{appointment.start_date | date:'dd/MM/yyyy'}}" name="start_date">
+    </div>
+
+    <div class="form-group">
+      <label for="start_date">Dia do Fim</label>
+      <input bsDatepicker id="end_date"  class="form-control" type="text"
+      [bsConfig]="{dateInputFormat:'dd/MM/yyyy'}" [(bsValue)]="appointment.end_date"
+      value="{{appointment.end_date | date:'dd/MM/yyyy'}}" name="end_date">
+    </div>
+
+    <div class="form-group">
+      <label for="description">Descrição</label>
+      <input id="description" [(ngModel)]="appointment.description" class="form-control" type="text" name="description" #description="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="place">Local</label>
+      <input id="place" [(ngModel)]="appointment.place" class="form-control" type="text" name="place" #place="ngModel">
+    </div>
+
+    <div class="form-group">
+      <label for="type">Tipo</label>
+      <input id="type" [(ngModel)]="appointment.type" class="form-control" type="text" name="type" #type="ngModel">
+    </div>
+
+<div class="modal-footer">
+  <button type="submit" class="btn btn-success" >Confirmar</button>
+  <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+
+</div>
+</form>
