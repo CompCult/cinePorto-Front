@@ -38,7 +38,7 @@ export class UsersComponent implements OnInit {
   create() {
     const initialState = {
       title: 'Criar Usuário',
-      user: new NewUser(null,null,null,null),
+      user: new NewUser(null,null,null,null, null),
       mensage: 'Usuário criado com sucesso',
       modify: false,
       password: ""

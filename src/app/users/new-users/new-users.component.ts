@@ -43,6 +43,8 @@ export class NewUsersComponent implements OnInit {
     }
 
     delete this.user.picture;
+    delete this.user._id;
+    console.log(this.user)
     this.userService.createUser(this.user).subscribe();
     this.router.navigate(['users']);
     //função para enviar um objeto para o componete pai
