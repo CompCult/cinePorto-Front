@@ -12,19 +12,7 @@
         <a class="nav-link" routerLink="users">Usuários<span class="sr-only">(current)</span></a>
       </li>
 
-      <li *ngIf="isManeger()" ngbDropdown class="d-inline-block ">
-        <a class="nav-link"  id="dropdownBasic3" routerLinkActive="active"  ngbDropdownToggle >
-          Pedidos
-        </a>
-
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
-          <button class="dropdown-item" routerLink="trees">Árvores</button>
-          <hr>
-          <button class="dropdown-item" routerLink="resquestTree">Gerenciar Pedidos</button>
-        </div>
-        
-      </li>
-
+     
       <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="local">Locais<span class="sr-only">(current)</span></a>
       </li>
@@ -55,20 +43,8 @@
 
       </li>
 
-      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
-        <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
-          Agenda
-        </a>
-        <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
-          <button class="dropdown-item" routerLink="appointment">Eventos</button>
-          <hr>
-          <button class="dropdown-item" routerLink="Appointmentrequest">Pedidos Eventos</button>
-        </div>
-      </li>
-
-      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="map">Mapa<span class="sr-only">(current)</span></a>
-      </li>
+      
+     
 
       <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
         <a class="nav-link" routerLink="statistic">Estatísticas<span class="sr-only">(current)</span></a>
