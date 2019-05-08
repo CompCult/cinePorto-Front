@@ -1,6 +1,6 @@
 <nav class="navbar my-nav navbar-expand-lg navbar-dark">
 
-  <a class="navbar-brand" routerLinkActive="active" routerLink="">CineAtos</a>
+  <a class="navbar-brand" routerLinkActive="active" routerLink="">Minha Árvore</a>
 
 
 
@@ -12,9 +12,22 @@
         <a class="nav-link" routerLink="users">Usuários<span class="sr-only">(current)</span></a>
       </li>
 
+      <li *ngIf="isManeger()" ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic3" routerLinkActive="active"  ngbDropdownToggle >
+          Pedidos
+        </a>
 
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic3">
+          <button class="dropdown-item" routerLink="trees">Árvores</button>
+          <hr>
+          <button class="dropdown-item" routerLink="resquestTree">Gerenciar Pedidos</button>
+        </div>
+        
+      </li>
 
-
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="local">Locais<span class="sr-only">(current)</span></a>
+      </li>
 
       <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
         <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
@@ -53,6 +66,13 @@
         </div>
       </li>
 
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="map">Mapa<span class="sr-only">(current)</span></a>
+      </li>
+
+      <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="statistic">Estatísticas<span class="sr-only">(current)</span></a>
+      </li>
 
     </ul>
 

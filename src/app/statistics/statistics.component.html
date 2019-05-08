@@ -1,0 +1,56 @@
+<div class="container-fluid container-config">
+  <div class="row no-gutters">
+
+    <!-- Card que representa a escolha da missão ou do quiz  -->
+    <div class="col-12 card choice-card-config">
+      <div class="card-body body-choice-config">
+
+        <!-- Div responsável pela escolha da missão ou do quiz -->
+        <div class="menu-choice">
+          <button class="btn btn-outline-success choice" (click)="selectQuiz()" >Quizzes</button>
+         
+        </div>
+
+        <!-- Tabela de Missões -->
+        
+        <!-- Tabela de Quizes -->
+        <div *ngIf="selectQuizFlag" class="list-config">
+          <table>
+            <tr>
+              <th style="width: 10%;" >ID</th>
+              <th style="width: 80%;" >TÍTULO</th>
+              <th style="width: 10%;">OPÇÕES</th>
+            </tr>
+            <tr *ngFor="let quiz of showQuizzes" >
+              <td style="width: 10%;" >{{quiz._id}}</td>
+              <td style="width: 80%;" >{{quiz.title}}</td>
+              <td style="width: 10%;">
+                <button class="btn btn-outline-success my-2 my-sm-0" (click)="selectQuizStatistic(quiz)">Selecionar</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Div para controle de paginação -->
+        
+      </div>
+    </div>
+
+    <p class = "result">Resultado para: {{selectedName}}</p>
+
+    <div class="col-12 card chats-card-config">
+        <div >
+          <canvas baseChart
+                      [datasets]="chartData"
+                      [labels]="chartLabels"
+                      [options]="chartOptions"
+                      [colors]="chartColors"
+                      [legend]="chartLegend"
+                      [chartType]="chartType"
+                      >
+          </canvas>
+        </div>
+    </div>
+
+  </div>
+</div>

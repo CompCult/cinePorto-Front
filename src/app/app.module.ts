@@ -7,25 +7,36 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
-
+import { ChartsModule} from 'ng2-charts';
 import { routing } from './app.routing';
 
 import { AgmCoreModule } from '@agm/core';
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users.component';
 import { NewUsersComponent } from './users/new-users/new-users.component';
+
 import { PanelComponent } from './panel/panel.component';
+
 import { UserService } from './users/user.service'
+
 import { LoginService } from './login/login.service'
 import { QuizService } from './quiz/quiz.service'
 import { MissionService } from './missions/mission.service'
 import { MissionAnswerService } from './mission-answer/missionAnswer.service'
+
 import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
 import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
+
 import { SearchService } from './search/search.service';
+import { StatisticService} from './statistics/statistic.service';
+
 import { AuthGuard } from './login/auth.guard';
+
+
+
 import { QuizComponent } from './quiz/quiz.component';
 import { NewQuizComponent } from './quiz/new-quiz/new-quiz.component';
 import { QuizAnswerComponent } from './quiz-answer/quiz-answer.component';
@@ -39,7 +50,9 @@ import { AppointmentService } from './appointments/appointment.service';
 import { NewAppointmentsComponent } from './appointments/new-appointments/new-appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
+
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { StatisticsComponent } from './statistics/statistics.component';
 
 
 
@@ -49,7 +62,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     LoginComponent,
     UsersComponent,
     NewUsersComponent,
+ 
     PanelComponent,
+   
     QuizComponent,
     NewQuizComponent,
     QuizAnswerComponent,
@@ -61,7 +76,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     AppointmentsComponent,
     NewAppointmentsComponent,
     AppointmentRequestComponent,
-    InitialPageComponent
+    InitialPageComponent,
+   
+    StatisticsComponent
 
   ],
   imports: [
@@ -74,12 +91,14 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     ModalModule.forRoot(),
     HttpModule,
     AlertModule.forRoot(),
+    ChartsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBb4zfxXZMu-1Mt-J8XdcsydsCyEkXcyX0'
     })
   ],
   providers: [
     UserService,
+ 
     LoginService,
     QuizService,
     QuizAnswerService,
@@ -89,17 +108,19 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     MissionService,
     MissionAnswerService,
     SearchService,
-
+  
+    StatisticService
 
   ],
   entryComponents:[
     NewUsersComponent,
+  
     NewQuizComponent,
     EvaluationQuizComponent,
     NewAppointmentsComponent,
     EvaluationMissionComponent,
     NewMissionComponent,
-
+ 
   ],
 
   bootstrap: [AppComponent]
