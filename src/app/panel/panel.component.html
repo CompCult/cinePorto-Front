@@ -43,6 +43,17 @@
 
       </li>
 
+      <li *ngIf="showMenu" ngbDropdown class="d-inline-block ">
+        <a class="nav-link"  id="dropdownBasic4" routerLinkActive="active"  ngbDropdownToggle >
+          Agenda
+        </a>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
+          <button class="dropdown-item" routerLink="appointment">Eventos</button>
+          <hr>
+          <button class="dropdown-item" routerLink="Appointmentrequest">Pedidos Eventos</button>
+        </div>
+      </li>
+
       
      
 
