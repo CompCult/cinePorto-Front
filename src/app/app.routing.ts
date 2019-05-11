@@ -10,6 +10,7 @@ import { QuizComponent} from './quiz/quiz.component'
 import { QuizAnswerComponent} from './quiz-answer/quiz-answer.component'
 import { MissionsComponent } from './missions/missions.component'
 import { MissionAnswerComponent} from './mission-answer/mission-answer.component'
+import { MissionProposedComponent } from './mission-proposed/mission-proposed.component'
 import { InitialPageComponent } from './initial-page/initial-page.component'
 
 
@@ -18,7 +19,6 @@ import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentRequestComponent } from './appointment-request/appointment-request.component';
 
 import { StatisticsComponent } from './statistics/statistics.component';
-
 
 const APP_ROUTES: Routes = [
   { path: '', component: LoginComponent },
@@ -29,6 +29,7 @@ const APP_ROUTES: Routes = [
   { path: 'quizAnswer', component: QuizAnswerComponent, canActivate: [AuthGuard]},
   { path: 'missson', component: MissionsComponent, canActivate: [AuthGuard]},
   { path: 'missionAnswer', component: MissionAnswerComponent, canActivate: [AuthGuard]},
+  { path: 'missionProposed', component: MissionProposedComponent, canActivate: [AuthGuard]},
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
   { path: 'statistic', component: StatisticsComponent, canActivate: [AuthGuard] },
   { path: 'appointment', component: AppointmentsComponent, canActivate: [AuthGuard] },
