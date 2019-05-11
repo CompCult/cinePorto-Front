@@ -44,6 +44,7 @@ import { EvaluationQuizComponent } from './quiz-answer/evaluation-quiz/evaluatio
 import { MissionsComponent } from './missions/missions.component';
 import { NewMissionComponent } from './missions/new-mission/new-mission.component';
 import { MissionAnswerComponent } from './mission-answer/mission-answer.component';
+import { MissionProposedComponent } from './mission-proposed/mission-proposed.component'
 import { EvaluationMissionComponent } from './mission-answer/evaluation-mission/evaluation-mission.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { AppointmentService } from './appointments/appointment.service';
@@ -72,6 +73,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     MissionsComponent,
     NewMissionComponent,
     MissionAnswerComponent,
+    MissionProposedComponent,
     EvaluationMissionComponent,
     AppointmentsComponent,
     NewAppointmentsComponent,
