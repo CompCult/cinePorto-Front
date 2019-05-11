@@ -9,7 +9,7 @@
     <ul class="navbar-nav mr-auto">
 
       <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="users">Usuários<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="users">Pessoas<span class="sr-only">(current)</span></a>
       </li>
 
      
@@ -23,9 +23,9 @@
         </a>
 
         <div ngbDropdownMenu aria-labelledby="dropdownBasic4">
-          <button class="dropdown-item" routerLink="quiz">Quiz</button>
+          <button class="dropdown-item" routerLink="quiz">Escolhas</button>
           <hr>
-          <button class="dropdown-item" routerLink="quizAnswer">Respostas Quizzes</button>
+          <button class="dropdown-item" routerLink="quizAnswer">Respostas das Escolhas</button>
         </div>
 
       </li>
@@ -47,7 +47,7 @@
      
 
       <li *ngIf="isManeger()" class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="statistic">Estatísticas<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="statistic">Painéis<span class="sr-only">(current)</span></a>
       </li>
 
     </ul>
