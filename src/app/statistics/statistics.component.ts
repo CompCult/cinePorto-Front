@@ -32,7 +32,7 @@ export class StatisticsComponent implements OnInit {
 
   // Chart
   chartData:Array<any> = [
-    {data: [0,0,0,0,0]},
+    {data: [0,0,0,0,0], label : 'Escolhas'},
   ];
 
   chartLabels:Array<any> = [];
@@ -69,12 +69,7 @@ export class StatisticsComponent implements OnInit {
     this.selectQuiz();
 
     setTimeout(() => {
-      this.missionService.getMission()
-      .subscribe(missions => {
-        this.missions = missions;
-        this.showMissions = missions.slice(0,5);
-      });
-
+   
       this.quizService.getQuiz()
       .subscribe(quizzes => {
         this.quizzes = quizzes;
@@ -84,17 +79,7 @@ export class StatisticsComponent implements OnInit {
   }
 
 
-  // Avança à proxima página da lista de missão
-  nextMissions(){
-    this.showMissionsPage++;
-    this.showMissions = this.missions.slice(this.showMissionsPage*5,this.showMissionsPage*5 + 5);
-  }
-
-  // Volta uma página na lista de missão
-  backMissions(){
-    this.showMissionsPage--;
-    this.showMissions = this.missions.slice(this.showMissionsPage*5,this.showMissionsPage*5 + 5);
-  }
+  
 
   // Avança à próxima pagina na lista de quizzes
   nextQuizzes(){
@@ -108,11 +93,7 @@ export class StatisticsComponent implements OnInit {
     this.showQuizzes = this.quizzes.slice(this.showQuizzesPage*5,this.showQuizzesPage*5 + 5);
   }
 
-  // Seleciona a missão
-  selectMission(){
-    this.selectMissionFlag = true;
-    this.selectQuizFlag = false;
-  }
+ 
 
   // Seleciona o quiz
   selectQuiz(){
