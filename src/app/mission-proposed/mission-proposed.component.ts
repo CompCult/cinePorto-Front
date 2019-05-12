@@ -10,7 +10,7 @@ import { MissionProposedService } from './mission-proposed.service'
 })
 
 export class MissionProposedComponent implements OnInit {
-
+ 
   missions: MissionProposed[];
   myData:any;
   atualiza:boolean;
@@ -18,13 +18,10 @@ export class MissionProposedComponent implements OnInit {
 constructor(private missionProposedService: MissionProposedService) {}
 
 updateList(){
-  console.log(this.missions)
   // delay para tempo de receber os valores do get
   setTimeout(() => {
-
-  this.missionProposedService.getMission()
-  .subscribe(missions => this.missions = missions);
-
+    this.missionProposedService.getMission()
+    .subscribe(missions => this.missions = missions);
   },1000);
 
 }
