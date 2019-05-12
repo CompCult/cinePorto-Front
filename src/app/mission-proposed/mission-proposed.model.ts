@@ -47,3 +47,9 @@ export class MissionProposed {
 
 
 }
+
+export class propostass{
+  public name:string
+  public text:string
+}
+

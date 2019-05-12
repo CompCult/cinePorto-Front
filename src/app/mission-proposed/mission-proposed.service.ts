@@ -22,7 +22,14 @@ export class MissionProposedService {
   }
 
   getPostsMission(id:number) {
-    return this.http.get(`${API}/missions_answers/${id}`).map((response: Response) => response.json());
+    return this.http.get(`${API}/missions_answers/query/fields?_mission=${id}`).map((response: Response) => response.json());
+  }
+
+  getNameUser(id:number){
+      return this.http.get(`${API}/users/query/fields?_id=${id}`)
+      .map(response => response.json())
+      .catch(ErrorHandler.handleError)
+    
   }
 
   //https://cine-porto-api.herokuapp.com/missions_answers/query/fields?_mission=2

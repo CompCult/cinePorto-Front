@@ -25,7 +25,7 @@
             <td>{{mission.name}}</td>
             <td>{{mission.points}}</td>
             <td style="width: 10%;">
-              <button class="btn btn-outline-success my-2 my-sm-0" (click)="selectMission(mission._id)">Selecionar</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" (click)="selectMission(mission)">Selecionar</button>
             </td>
           </tr>
         </table>
@@ -43,9 +43,9 @@
         <th>TEXT</th>
         
       </tr>
-      <tr *ngFor="let t of text">
+      <tr *ngFor="let t of propostas">
         <td>{{t.name}}</td>
-        <td>{{t.has_text}}</td>
+        <td>{{t.text}}</td>
       </tr>
     </table>
  
