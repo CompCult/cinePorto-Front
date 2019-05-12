@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core'
-import { Http } from '@angular/http'
+import { Http, Response } from '@angular/http'
 
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/operator/map'
@@ -20,5 +20,11 @@ export class MissionProposedService {
     .map(response => response.json())
     .catch(ErrorHandler.handleError)
   }
+
+  getPostsMission(id:number) {
+    return this.http.get(`${API}/missions_answers/${id}`).map((response: Response) => response.json());
+  }
+
+  //https://cine-porto-api.herokuapp.com/missions_answers/query/fields?_mission=2
 
 }

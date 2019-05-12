@@ -25,7 +25,7 @@
             <td>{{mission.name}}</td>
             <td>{{mission.points}}</td>
             <td style="width: 10%;">
-              <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(mission)">Selecionar</button>
+              <button class="btn btn-outline-success my-2 my-sm-0" (click)="selectMission(mission._id)">Selecionar</button>
             </td>
           </tr>
         </table>
@@ -35,17 +35,17 @@
       </div>
     </div>
 
-    <p class = "result">Resultado</p>
+    <p class = "result">Resultado para: {{selectedName}}</p>
 
     <table>
       <tr>
-        <th>ID</th>
-        <th>NOME</th>
+        <th>NAME</th>
+        <th>TEXT</th>
         
       </tr>
-      <tr *ngFor="let t of teste">
-        <td>{{t.id}}</td>
-        <td>{{t.nome}}</td>
+      <tr *ngFor="let t of text">
+        <td>{{t.name}}</td>
+        <td>{{t.has_text}}</td>
       </tr>
     </table>
  

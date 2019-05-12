@@ -12,8 +12,11 @@ import { MissionProposedService } from './mission-proposed.service'
 export class MissionProposedComponent implements OnInit {
  
   missions: MissionProposed[];
+  text: any[];
   myData:any;
   atualiza:boolean;
+  // missão selecionado
+  selectedName:string = "";
 
 constructor(private missionProposedService: MissionProposedService) {}
 
@@ -33,6 +36,19 @@ atualizaAutomatico(){
      this.atualizaAutomatico();
    },20000);
    }
+}
+
+selectMission(mission: MissionProposed){
+
+   // delay para tempo de receber os valores do get
+  setTimeout(() => {
+    this.missionProposedService.getPostsMission(mission._id).subscribe(response =>{
+      // Nome da mission selecionado
+      this.selectedName = mission.name;
+      //resposta do servidor
+      this.text = response;
+    })},1000);
+    
 }
 
 ngOnInit() {
