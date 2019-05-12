@@ -1,3 +1,45 @@
-<div class="top-space">
-  proposta
+<div class="container-fluid container-config">
+  <div class="row no-gutters">
+
+    <!-- Card que representa a escolha da missão ou do quiz  -->
+    <div class="col-12 card choice-card-config">
+      <div class="card-body body-choice-config">
+
+        <!-- Div responsável pela escolha da missão ou do quiz -->
+        <div class="menu-choice">
+          <button class="btn btn-outline-success choice" (click)="selectQuiz()" >Propostas</button>
+         
+        </div>
+
+        <!-- Tabela de Missões -->
+        
+       <table>
+          <tr>
+            <th>ID</th>
+            <th>TÍTULO</th>
+            <th>PONTOS</th>
+            <th style="width: 10%;">OPÇÕES</th>
+          </tr>
+          <tr *ngFor="let mission of missions">
+            <td>{{mission._id}}</td>
+            <td>{{mission.name}}</td>
+            <td>{{mission.points}}</td>
+            <td style="width: 10%;">
+              <button class="btn btn-outline-success my-2 my-sm-0" (click)="option(mission)">Selecionar</button>
+            </td>
+          </tr>
+        </table>
+     
+        <!-- Div para controle de paginação -->
+        
+      </div>
+    </div>
+
+    <p class = "result">Resultado para: {{selectedName}}</p>
+
+    <div class="col-12 card chats-card-config">
+      
+    </div>
+
+  </div>
 </div>

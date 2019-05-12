@@ -26,6 +26,7 @@ import { LoginService } from './login/login.service'
 import { QuizService } from './quiz/quiz.service'
 import { MissionService } from './missions/mission.service'
 import { MissionAnswerService } from './mission-answer/missionAnswer.service'
+import { MissionProposedService } from './mission-proposed/mission-proposed.service'
 
 import { QuizAnswerService } from './quiz-answer/quizAnswer.service'
 import { AppointmentRequestService } from './appointment-request/AppointmentRequest.service';
@@ -109,6 +110,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
     AppointmentRequestService,
     MissionService,
     MissionAnswerService,
+    MissionProposedService,
     SearchService,
   
     StatisticService
