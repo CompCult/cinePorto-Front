@@ -36,4 +36,4 @@ const APP_ROUTES: Routes = [
   { path: 'Appointmentrequest', component: AppointmentRequestComponent, canActivate: [AuthGuard] }
 ];
 
-export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
+export const routing: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES, {useHash: true});

@@ -8,11 +8,11 @@
         <!-- Div responsável pela escolha da missão ou do quiz -->
         <div class="menu-choice">
           <button class="btn btn-outline-success choice">Propostas</button>
-         
+
         </div>
 
         <!-- Tabela de Missões -->
-        
+
        <table>
           <tr>
             <th>ID</th>
@@ -29,9 +29,9 @@
             </td>
           </tr>
         </table>
-     
+
         <!-- Div para controle de paginação -->
-        
+
       </div>
     </div>
 
@@ -41,14 +41,13 @@
       <tr>
         <th>NAME</th>
         <th>TEXT</th>
-        
+
       </tr>
       <tr *ngFor="let t of propostas">
         <td>{{t.name}}</td>
         <td>{{t.text}}</td>
       </tr>
     </table>
- 
-
+    
   </div>
 </div>

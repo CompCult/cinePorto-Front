@@ -4,16 +4,14 @@ import { MissionProposed } from './mission-proposed.model';
 import { MissionProposedService } from './mission-proposed.service'
 import {propostass} from './mission-proposed.model'
 
-
 @Component({
   selector: 'app-mission-proposed',
   templateUrl: './mission-proposed.component.html',
   styleUrls: ['./mission-proposed.component.css']
 })
 
-
 export class MissionProposedComponent implements OnInit {
- 
+
   missions: MissionProposed[];
   text: any[];
   myData:any;
@@ -43,8 +41,6 @@ atualizaAutomatico(){
 }
 
 selectMission(mission: MissionProposed){
-  console.log(mission)
-
    // delay para tempo de receber os valores do get
   setTimeout(() => {
     this.missionProposedService.getPostsMission(mission._id).subscribe(response =>{
@@ -56,29 +52,29 @@ selectMission(mission: MissionProposed){
       this.proposta()
 
     })},1000);
-    
+
 }
 
 proposta(){
+  if(this.propostas.length > 0) {
+    this.propostas = [];
+  }
+
   for (let i of this.text){
     setTimeout(() => {
       this.missionProposedService.getNameUser(i._user).subscribe(response =>{
-      
         let pro:propostass= {
           name: response[0].name,
           text:i.text_msg
         }
         console.log(pro)
-        
+
         this.propostas.push(pro)
         console.log(this.propostas)
-  
-      })},1000);
-      
 
+      })},1000);
   }
 }
-
 
 ngOnInit() {
   this.updateList();
