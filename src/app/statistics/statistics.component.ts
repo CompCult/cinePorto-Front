@@ -30,6 +30,8 @@ export class StatisticsComponent implements OnInit {
   selectMissionFlag:boolean = false;
   selectQuizFlag:boolean = true;
 
+  quizz: Quiz;
+
   // Chart
   chartData:Array<any> = [
     {data: [0,0,0,0,0], label : 'Escolhas'},
@@ -39,7 +41,7 @@ export class StatisticsComponent implements OnInit {
 
   // Objeto de configuracao do charts
   chartOptions:any = {
-    scaleShowVerticalLines: false,
+    scaleShowVerticalLines: true,
     responsive: true
   };
 
@@ -73,7 +75,7 @@ export class StatisticsComponent implements OnInit {
       this.quizService.getQuiz()
       .subscribe(quizzes => {
         this.quizzes = quizzes;
-        this.showQuizzes = quizzes.slice(0,5);
+        this.showQuizzes = quizzes;
       });
     },1000);
   }
@@ -107,8 +109,10 @@ export class StatisticsComponent implements OnInit {
 
   // Função para buscar os valores dos quizzes no servidor
   selectQuizStatistic(quiz:Quiz){
+    this.quizz= quiz;
     this.statisticService.getStatisticQuizz(quiz._id).subscribe(response =>{
-      this.chartData = response;
+      console.log(response[0].data)
+      this.chartData = [{data: response[0].data , label: 'Escolhas'}];
       // Nome do quiz selecionado
       this.selectedName = quiz.title;
     })

@@ -35,8 +35,42 @@
         
       </div>
     </div>
+    <div>
+    <h1 class = "result">Resultado para: {{selectedName}}</h1>
+  </div>
+    <br/>
+    <br/>
+    <br/>
 
-    <p class = "result">Resultado para: {{selectedName}}</p>
+    <div class="list-config" *ngIf="quizz">
+    <table>
+      <tr>
+        <th style="width: 30%;" >OPÇÃO</th>
+        <th style="width: 100%;" >ALTERNATIVA</th>
+        
+      </tr>
+      <tr >
+        <td style="width: 30%;" >Alternativa A</td>
+        <td style="width: 70%;" >{{quizz.alternative_a}}</td>
+      </tr>
+      <tr >
+        <td style="width: 30%;" >Alternativa B</td>
+        <td style="width: 70%;" >{{quizz.alternative_b}}</td>
+      </tr>
+      <tr >
+        <td style="width: 30%;" >Alternativa C</td>
+        <td style="width: 70%;" >{{quizz.alternative_c}}</td>
+      </tr>
+      <tr >
+        <td style="width: 30%;" >Alternativa D</td>
+        <td style="width: 70%;" >{{quizz.alternative_d}}</td>
+      </tr>
+      <tr >
+        <td style="width: 30%;" >Alternativa E</td>
+        <td style="width: 70%;" >{{quizz.alternative_e}}</td>
+      </tr>
+    </table>
+  </div>
 
     <div class="col-12 card chats-card-config">
         <div >
